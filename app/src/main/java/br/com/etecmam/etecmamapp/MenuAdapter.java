@@ -52,7 +52,6 @@ public class MenuAdapter extends BaseAdapter {
         foto.setImageDrawable(d);
         texto.setText( item.getTitulo());
 
-
         return v;
     }
 }

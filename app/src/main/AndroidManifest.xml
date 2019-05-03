@@ -9,8 +9,10 @@
         android:roundIcon="@drawable/logo_app_etec"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CursoActivity"
-            android:parentActivityName=".CursosActivity"/>
+        <activity android:name=".SobreActivity"></activity>
+        <activity
+            android:name=".CursoActivity"
+            android:parentActivityName=".CursosActivity" />
         <activity
             android:name=".VestibulinhoActivity"
             android:parentActivityName=".MenuActivity" />
@@ -26,6 +28,7 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
