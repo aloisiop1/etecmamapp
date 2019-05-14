@@ -1,9 +1,15 @@
 package br.com.etecmam.etecmamapp;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +19,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.etecmam.etecmamapp.sms.Util;
+
 public class MenuActivity extends AppCompatActivity {
+
+    private static final int SMS_PERMISSION_CODE = 0;
+    private static final String TAG = "MenuActivity";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,6 +51,13 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         setTitle("ETECMAM GARÇA");
+
+        if(! hasReadSmsPermission()){
+            requestReadAndSendSmsPermission();
+        }
+
+        Util.getApp().iniciarServicoEmBackGround();
+
 
         ListView lista = findViewById(R.id.menu_lista);
 
@@ -84,4 +102,28 @@ public class MenuActivity extends AppCompatActivity {
         });
 
     }
+
+    private boolean hasReadSmsPermission() {
+        return ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestReadAndSendSmsPermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_SMS)) {
+            Log.i(TAG,"shouldShowRequestPermissionRationale(), no permission requested");
+            return;
+        }
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{
+                        Manifest.permission.READ_SMS,
+                        Manifest.permission.RECEIVE_SMS,
+                        Manifest.permission.SEND_SMS
+                },
+                SMS_PERMISSION_CODE);
+    }
+
 }
