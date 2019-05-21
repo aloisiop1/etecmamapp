@@ -10,7 +10,15 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.etecmam.etecmamapp.sms.Util;
+
 public class CursosActivity extends AppCompatActivity {
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setTelaAtual(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

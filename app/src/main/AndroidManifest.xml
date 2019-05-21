@@ -2,10 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.etecmam.etecmamapp">
 
-
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:name=".App"
@@ -15,11 +14,13 @@
         android:roundIcon="@drawable/logo_app_etec"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ContatoActivity"></activity>
+
         <service
             android:name=".sms.Servico"
             android:enabled="true" />
 
-        <activity android:name=".SobreActivity"></activity>
+        <activity android:name=".SobreActivity" />
         <activity
             android:name=".CursoActivity"
             android:parentActivityName=".CursosActivity" />

@@ -8,12 +8,11 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
 
+import br.com.etecmam.etecmamapp.R;
+
 
 public class ReceptorSMS  extends android.content.BroadcastReceiver {
-
     public static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
-    private Servico servico;
-
     public ReceptorSMS() {
         super();
     }
@@ -22,7 +21,6 @@ public class ReceptorSMS  extends android.content.BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         if (intent.getAction().equals(SMS_RECEIVED)) {
-
             Bundle bundle = intent.getExtras();
 
             if (bundle != null) {
@@ -31,7 +29,6 @@ public class ReceptorSMS  extends android.content.BroadcastReceiver {
                 if (pdus.length == 0) {
                     return;
                 }
-                // large message might be broken into many
                 SmsMessage[] messages = new SmsMessage[pdus.length];
                 StringBuilder sb = new StringBuilder();
 
@@ -39,17 +36,20 @@ public class ReceptorSMS  extends android.content.BroadcastReceiver {
                     messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
                     sb.append(messages[i].getMessageBody());
                 }
-                String sender = messages[0].getOriginatingAddress();
 
                 final String mensagem = sb.toString();
+                String sender = messages[0].getOriginatingAddress();
 
-                Log.i("RECEPTOR SMS",mensagem);
-
-                Toast.makeText(context, mensagem, Toast.LENGTH_SHORT).show();
-
-
+                if(sender.equals("981193960")){
+                    AlertDialog.Builder alerta = new AlertDialog.Builder( Util.getTelaAtual() );
+                    alerta.setIcon(R.drawable.sms);
+                    alerta.setTitle("RECADO DA ETEC");
+                    alerta.setMessage(mensagem);
+                    alerta.setPositiveButton("OK", null);
+                    alerta.show();
+                }
             }
         }
     }
-
 }
+

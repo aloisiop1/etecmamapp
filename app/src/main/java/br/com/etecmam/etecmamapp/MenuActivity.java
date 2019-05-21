@@ -1,7 +1,6 @@
 package br.com.etecmam.etecmamapp;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -25,6 +24,12 @@ public class MenuActivity extends AppCompatActivity {
 
     private static final int SMS_PERMISSION_CODE = 0;
     private static final String TAG = "MenuActivity";
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setTelaAtual(this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

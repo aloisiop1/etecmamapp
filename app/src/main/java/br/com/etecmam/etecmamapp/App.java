@@ -1,6 +1,7 @@
 package br.com.etecmam.etecmamapp;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 
 import br.com.etecmam.etecmamapp.sms.Servico;
@@ -9,6 +10,7 @@ import br.com.etecmam.etecmamapp.sms.Util;
 public class App extends Application {
 
     private Servico servico;
+
     private Intent intentService;
 
     @Override
@@ -24,3 +26,4 @@ public class App extends Application {
     }
 
 }
+

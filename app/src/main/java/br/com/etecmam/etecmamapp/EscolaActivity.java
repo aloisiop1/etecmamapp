@@ -1,12 +1,20 @@
 package br.com.etecmam.etecmamapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 
+import br.com.etecmam.etecmamapp.sms.Util;
+
 public class EscolaActivity extends AppCompatActivity {
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setTelaAtual(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,12 @@ public class EscolaActivity extends AppCompatActivity {
                 "text/html; charset=utf-8",
                 "utf-8");
 
+        findViewById(R.id.escola_mensagem).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(EscolaActivity.this, ContatoActivity.class) );
+            }
+        });
 
     }
 }

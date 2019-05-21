@@ -5,7 +5,16 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import br.com.etecmam.etecmamapp.sms.Util;
+
 public class CursoActivity extends AppCompatActivity {
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Util.setTelaAtual(this);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
