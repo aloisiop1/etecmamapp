@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "51179276220",
+    "firebase_url": "https://etecmamapp.firebaseio.com",
+    "project_id": "etecmamapp",
+    "storage_bucket": "etecmamapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51179276220:android:b0a6e0c8fb56ba36",
+        "android_client_info": {
+          "package_name": "br.com.etecmam.etecmamapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51179276220-sl13ftpnuv3n0o62pabhbam75ibbt5le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2mRvQtMcspnHlSz5TA56m452SVGkY_Yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51179276220-sl13ftpnuv3n0o62pabhbam75ibbt5le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
